@@ -1,152 +1,187 @@
-# Visual Product Matcher
+# 🖼️ Visual Product Matcher
 
-A sophisticated web application that uses advanced computer vision techniques to find visually similar products based on uploaded images or URLs.
+A sophisticated web application that helps users discover visually similar products using **AI-powered image recognition**.  
+Upload an image or provide a URL to instantly find matching products from a curated database.
 
-## 🚀 Features
+![React](https://img.shields.io/badge/React-18.2.0-blue?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0.0-blue?style=flat-square&logo=typescript)
+![Vite](https://img.shields.io/badge/Vite-4.4.0-purple?style=flat-square&logo=vite)
+![Tailwind](https://img.shields.io/badge/TailwindCSS-3.x-38B2AC?style=flat-square&logo=tailwind-css)
+![License](https://img.shields.io/badge/License-MIT-green?style=flat-square)
 
-- **Dual Input Methods**: Upload images via drag-and-drop or provide image URLs
-- **Advanced Visual Analysis**: Color extraction, brightness analysis, and aspect ratio matching
-- **Smart Filtering**: Filter by similarity threshold and product categories
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Real-time Preview**: Instant image validation and preview
-- **Professional UI**: Modern glass-morphism design with smooth animations
+<p align="center">
+  <img src="./Project/public/sample.png" alt="Visual Product Matcher" width="740" />
+</p>
 
-## 🛠 Technology Stack
+---
 
-- **Frontend**: React 18 with TypeScript
-- **Styling**: Tailwind CSS
-- **Build Tool**: Vite
-- **Icons**: Lucide React
-- **Image Processing**: Canvas API for client-side analysis
+## ✨ Features
+
+- 🖼️ **Dual Input**: Upload images (drag-and-drop) or paste an image URL  
+- 🤖 **AI Recognition**: Powered by [Imagga API](https://imagga.com/) for color extraction, tagging, and similarity detection  
+- 🔍 **Smart Filtering**: Filter results by similarity threshold, category, and price  
+- 📱 **Responsive UI**: Optimized for desktop, tablet, and mobile devices  
+- ⚡ **Fast Performance**: Built with **React 18**, **Vite**, and client-side optimizations  
+- 🎨 **Modern Design**: Glass-morphism UI, smooth animations, and Lucide icons  
+
+---
 
 ## 📊 Visual Similarity Algorithm
 
-Our proprietary algorithm analyzes multiple visual features:
+The system combines **Imagga AI** with custom **client-side heuristics**:
 
-1. **Color Analysis** (40% weight)
-   - Extracts dominant colors using pixel sampling
-   - Calculates RGB distance for color similarity
-   - Identifies color temperature and saturation
+1. **Color Analysis** (40%) → Dominant colors & RGB distance  
+2. **Brightness** (20%) → Overall luminosity comparison  
+3. **Aspect Ratio** (20%) → Dimensions & orientation  
+4. **Tag-based Similarity** (20%) → AI-generated semantic tags vs product metadata  
 
-2. **Brightness Analysis** (20% weight)
-   - Measures overall image luminosity
-   - Compares lighting conditions
+---
 
-3. **Aspect Ratio Matching** (20% weight)
-   - Analyzes image dimensions and proportions
-   - Identifies portrait, landscape, or square orientations
+## 🛠 Technology Stack
 
-4. **Tag-based Similarity** (20% weight)
-   - Generates semantic tags from visual features
-   - Matches against product metadata
+- **Framework**: React 18 + TypeScript  
+- **Build Tool**: Vite  
+- **Styling**: Tailwind CSS  
+- **Icons**: Lucide React  
+- **Image Analysis**: Imagga API + Canvas API  
+- **Deployment**: Vercel / Netlify  
 
-## 🏗 Installation & Setup
+---
 
+## 🧩 API Integration
+
+We use the **[Imagga API](https://imagga.com/)** for image recognition.  
+The following endpoints are used:
+
+- `/colors` → Extract dominant colors  
+- `/tags` → Generate semantic image tags  
+- `/categorization` → AI-driven product categorization  
+
+📖 [Imagga API Docs](https://imagga.com/docs)
+
+---
+
+## 📦 Installation & Setup
+
+### Prerequisites
+- Node.js **16+**  
+- npm or yarn  
+- Imagga API account ([Sign up here](https://imagga.com/))  
+
+### 1. Clone the Repository
 ```bash
-# Clone the repository
-git clone <repository-url>
+git clone https://github.com/sunscarsonys/visual-product-matcher.git
 cd visual-product-matcher
-
-# Install dependencies
-npm install
-
-# Start development server
-npm run dev
-
-# Build for production
-npm run build
 ```
 
-## 📱 Usage
+---
 
-1. **Upload Image**: Drag and drop an image or click "Choose File"
-2. **Or Enter URL**: Paste a direct link to an image
-3. **Preview**: Review your uploaded image
-4. **Search**: Click "Find Similar Products" to start analysis
-5. **Filter Results**: Use similarity threshold and category filters
-6. **Sort**: Order results by similarity score or price
+## 📦 Install Dependencies
 
-## 🗄 Product Database
+```bash
+npm install
+# or
+yarn install
+```
 
-The application includes a curated database of 50+ products across categories:
-- Electronics (phones, headphones, laptops)
-- Fashion (clothing, accessories, shoes)
-- Home & Garden (furniture, decor, plants)
-- Sports & Fitness (equipment, apparel)
-- Books & Media (literature, magazines)
-- Food & Beverage (gourmet items, beverages)
-- Beauty & Personal Care (skincare, cosmetics)
-
-All product images are sourced from Pexels for high quality and consistency.
+---
 
 ## 🔧 Configuration
 
 ### Environment Variables
-No additional environment variables required - the app runs entirely client-side.
 
-### Customization
-- Modify `src/data/products.ts` to update the product database
-- Adjust similarity weights in `src/utils/imageAnalysis.ts`
-- Customize styling in Tailwind configuration
+Create a `.env` file at the root of the project:
 
-## 🚀 Deployment
+```bash
+# .env
+VITE_IMAGGA_API_KEY=your_imagga_api_key
+VITE_IMAGGA_API_SECRET=your_imagga_api_secret
 
-The application is deployed on Vercel with automatic deployments from the main branch.
+For reference, see `.env.example` included in the repo:
+# .env.example
+VITE_IMAGGA_API_KEY=your_api_key_here
+VITE_IMAGGA_API_SECRET=your_api_secret_here
+```
+---
 
-**Live Demo**: [Visual Product Matcher](https://visual-product-matcher.vercel.app)
+## 🔧 Run the Development Server
 
-### Deploy Your Own
-1. Fork the repository
-2. Connect to Vercel/Netlify
-3. Deploy with default settings
-
-## 🎯 Performance Considerations
-
-- **Client-side Processing**: All image analysis runs in the browser
-- **Image Optimization**: Automatically handles CORS and loading states
-- **Memory Management**: Efficient canvas operations with cleanup
-- **Responsive Images**: Optimized for different screen sizes
-
-## 🔒 Privacy & Security
-
-- **No Data Storage**: Images are processed locally and not stored
-- **CORS Handling**: Secure cross-origin image loading
-- **Input Validation**: Comprehensive file type and size validation
-
-## 🐛 Known Limitations
-
-- **CORS Restrictions**: Some external images may not load due to CORS policies
-- **Mobile Performance**: Image processing may be slower on lower-end devices
-- **Similarity Accuracy**: Results depend on image quality and lighting conditions
-
-## 🔮 Future Improvements
-
-- [ ] Machine learning integration with TensorFlow.js
-- [ ] Advanced feature extraction (edges, textures, objects)
-- [ ] User feedback system for similarity accuracy
-- [ ] Product recommendation engine
-- [ ] Integration with e-commerce APIs
-- [ ] Batch image processing
-- [ ] Advanced filtering options
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests if applicable
-5. Submit a pull request
-
-## 📄 License
-
-MIT License - feel free to use this project for personal or commercial purposes.
-
-## 👥 Credits
-
-- **Images**: Pexels.com for high-quality product photography
-- **Icons**: Lucide React icon library
-- **Design**: Inspired by modern e-commerce and AI applications
+```bash
+npm run dev
+# or
+yarn dev
+```
 
 ---
 
-Built with ❤️ using React and advanced computer vision techniques.
+### How to Use
+
+```markdown
+## 🎯 How to Use
+
+- **Upload an Image**: Drag and drop an image or click to browse files  
+- **Or Enter Image URL**: Paste a direct image URL for analysis  
+- **AI Analysis**: Our system processes the image and identifies objects  
+- **Browse Results**: View similar products with similarity scores  
+- **Filter & Sort**: Refine results by category, similarity, or price  
+```
+---
+
+## 📁 Project Structure
+```bash
+src/
+├── components/          # React components
+│   ├── ImageUploader.tsx
+│   ├── SearchResults.tsx
+│   └── Header.tsx
+├── services/            # API services
+│   └── imageRecognition.ts
+├── data/                # Static data
+│   └── products.ts
+├── types/               # TypeScript definitions
+│   └── index.ts
+├── utils/               # Utility functions
+│   └── imageAnalysis.ts
+└── App.tsx              # Main application component
+```
+
+
+---
+
+## 📝 Assignment Details
+
+This project was developed as a technical assessment for the Software Engineer position at Unthinkable Solutions – Daffodils.
+
+**Requirements Fulfilled ✅**
+
+- Image upload (file + URL input)  
+- Search interface with filtering  
+- Product database with 50+ items  
+- Live deployment  
+- Mobile responsive design  
+- Clean, production-quality code  
+- Error handling and loading states  
+- Comprehensive documentation  
+
+---
+
+## 📄 License
+
+This project is created by Sanskar Soni as an assignment for Unthinkable Solutions – Daffodils.  
+All rights reserved.
+
+---
+
+## 👨‍💻 Developer
+
+Sanskar Soni
+
+- 🌐 Portfolio: [www.sunscar.dev](https://www.sunscar.dev)  
+- 📧 Email: sanskarsoni663@gmail.com  
+- 💻 GitHub: [@Sunscarsonys](https://github.com/Sunscarsonys)  
+
+---
+
+<div align="center">
+Made with ❤️ by Sanskar Soni
+</div>
