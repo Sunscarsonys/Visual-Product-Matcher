@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 .poppins-text {
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 @keyframes float {
