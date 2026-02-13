@@ -106,6 +106,13 @@ function App() {
                 Upload an image or paste a URL to find visually similar products.
                 Our advanced AI analyzes colors, shapes, and patterns to deliver accurate matches.
               </p>
+              <a 
+                href="/doc.pdf" 
+                download="doc.pdf"
+                className="inline-block mt-6 px-6 py-3 bg-indigo-600 hover:bg-blue-700 text-white font-semibold rounded-lg transition duration-200 ease-in-out transform hover:scale-105"
+              >
+                Download Documentation
+              </a>
             </div>
             <ImageUploader onImageUpload={handleImageUpload} />
           </div>
